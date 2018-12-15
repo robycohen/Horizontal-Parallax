@@ -42,7 +42,7 @@ public class MainActivity extends AppCompatActivity {
             public void onScrolled(RecyclerView r, int dx, int dy) {
                 super.onScrolled(r, dx, dy);
                 View view = r.getChildAt(0);
-                if(view != null && recyclerView.getChildAdapterPosition(view) == 0) {
+                if(view != null && r.getChildAdapterPosition(view) == 0) {
                     view.setTranslationX(-view.getLeft() / 2);
                 }
             }
