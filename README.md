@@ -1,2 +1,2 @@
 # Screenshot
-<img src="/blob/master/Screenshot.png" width="300">
+<img src="https://github.com/robycohen/Horizontal-Parallax/blob/master/Screenshot.png" width="300">
