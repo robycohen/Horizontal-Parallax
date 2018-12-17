@@ -21,7 +21,6 @@ public class MainActivity extends AppCompatActivity {
 
     private ItemAdapter adapter;
     private List<String> list;
-    private View itemCover;
 
 
     @Override
@@ -32,9 +31,6 @@ public class MainActivity extends AppCompatActivity {
         initSetup();
     }
 
-    ColorDrawable drawable = new ColorDrawable();
-
-
     private void initSetup() {
         list = new ArrayList<>(Arrays.asList("cover", "Description 1", "Description 2", "Description 3", "Description 4", "Description 5"));
         adapter = new ItemAdapter(list);
@@ -42,26 +38,22 @@ public class MainActivity extends AppCompatActivity {
         recyclerView.setAdapter(adapter);
         recyclerView.addItemDecoration(new SpacesItemDecoration(10));
 
-        drawable.setColor(ContextCompat.getColor(this, R.color.colorPrimary));
-
         recyclerView.addOnScrollListener(new RecyclerView.OnScrollListener() {
             @Override
             public void onScrolled(RecyclerView r, int dx, int dy) {
                 super.onScrolled(r, dx, dy);
-                if(itemCover ==null) {
-                    itemCover = r.getChildAt(0);
-                }
+                View itemCover = r.getChildAt(0);
 
                 if (r.getChildAdapterPosition(itemCover) == 0) {
                     itemCover.setTranslationX(-itemCover.getLeft() / 2);
-                    setOpacity(itemCover,r);
+                    setOpacity(itemCover, r);
                 }
 
             }
         });
     }
 
-    private void setOpacity(View view,RecyclerView recyclerView) {
+    private void setOpacity(View view, RecyclerView recyclerView) {
         int headerWidth = (view.getWidth() * 2) - recyclerView.computeHorizontalScrollOffset();
         float ratio = (float) Math.min(Math.max(-view.getLeft(), 0), headerWidth) / headerWidth;
         float alpha = Math.abs(ratio - 1);
